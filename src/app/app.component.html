@@ -1,0 +1,25 @@
+
+<mat-toolbar class="toolbar-header">
+  <span class="text-header">
+    Weather Forecast Application
+  </span>
+</mat-toolbar>
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <span class="text-label">
+        Weather        
+      </span>
+    </ng-template>
+    <app-main-site></app-main-site>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <span class="text-label">
+        About
+      </span>
+    </ng-template>
+    <app-about-site></app-about-site>
+  </mat-tab>
+</mat-tab-group>
+

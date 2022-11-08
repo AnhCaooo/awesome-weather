@@ -1,0 +1,16 @@
+.toolbar-header {
+    background-color: #0000a0;
+}
+
+.text-header {
+    color: #ffffff;
+    font-family: sans-serif;
+    margin-left: 10px;
+    font-size: 24px;
+}
+
+.text-label {
+    color: #000000;
+    font-family: sans-serif;
+    font-size: 16px;
+}
