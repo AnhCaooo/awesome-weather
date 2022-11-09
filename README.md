@@ -4,7 +4,8 @@ Use this project for checking weather forecast based on city name, country code.
 
 ## Preparations
 
-Create and insert your API key to /src/assets/config.ts
+Create and insert your API key to /src/assets/config.ts.
+`export const openWeatherApiKey = '<YOUR_OPENWEATHER_API_KEY>';`
 
 ## Development server
 
