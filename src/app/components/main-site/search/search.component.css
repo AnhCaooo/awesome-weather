@@ -1,0 +1,7 @@
+.searching-form {
+    color: #333333;
+    font-family: sans-serif;
+    margin: 50px auto; 
+    display: flex;
+    flex-direction: column;
+}

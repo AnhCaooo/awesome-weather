@@ -6,17 +6,24 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
 
 // Components
 import { AppComponent } from './app.component';
 import { MainSiteComponent } from './components/main-site/main-site.component';
+import { SearchComponent } from './components/main-site/search/search.component';
 import { AboutSiteComponent } from './components/about-site/about-site.component';
+import { WeathersComponent } from './components/main-site/weathers/weathers.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainSiteComponent,
-    AboutSiteComponent
+    AboutSiteComponent,
+    SearchComponent,
+    WeathersComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +32,10 @@ import { AboutSiteComponent } from './components/about-site/about-site.component
     MatToolbarModule,
     MatInputModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule,
+    MatTableModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
