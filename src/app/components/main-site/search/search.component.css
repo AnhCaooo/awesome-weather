@@ -5,3 +5,10 @@
     display: flex;
     flex-direction: column;
 }
+
+.mat-flat-button {
+    background-color: #0000a0;
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 16px;
+}

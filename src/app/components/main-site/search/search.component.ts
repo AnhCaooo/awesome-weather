@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { WeathersService } from 'src/app/services/weathers.service';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -7,8 +8,9 @@ import { WeathersService } from 'src/app/services/weathers.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  searchCity = '';
-  
+  searchCity = new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+')]);
+  searchCountry = new FormControl('');
+
   constructor(
     private weathersService: WeathersService
   ) { }
@@ -17,11 +19,7 @@ export class SearchComponent implements OnInit {
   }
   
   searchWeathers(): void {
-    if (this.searchCity === '') {
-      return;
-    }
-
-    this.weathersService.getWeathers(this.searchCity).subscribe({
+    this.weathersService.getWeathers(this.searchCity.value, this.searchCountry.value).subscribe({
       next: data => {
         this.weathersService.passWeathers(data);
       }, 

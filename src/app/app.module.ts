@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Components
 import { AppComponent } from './app.component';
@@ -16,7 +17,6 @@ import { MainSiteComponent } from './components/main-site/main-site.component';
 import { SearchComponent } from './components/main-site/search/search.component';
 import { AboutSiteComponent } from './components/about-site/about-site.component';
 import { WeathersComponent } from './components/main-site/weathers/weathers.component';
-import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,8 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     MatTableModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

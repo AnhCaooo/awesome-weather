@@ -1,27 +1,30 @@
 <form class="searching-form">
-        <mat-form-field>
+        <mat-form-field class="">
             <mat-label>Search for a city</mat-label>
             <input 
                 matInput 
                 placeholder="Helsinki"
-                name="location"
-                [(ngModel)]="searchCity">
+                name="city"
+                required
+                [formControl]="searchCity">
             <mat-icon matPrefix>search</mat-icon>
+            <mat-error *ngIf="searchCity.hasError('required')">You should search for a city first!</mat-error>
+            <mat-error *ngIf="searchCity.hasError('pattern')">City name must follow this pattern [a-zA-z]!</mat-error>
         </mat-form-field>
-        <!-- <mat-form-field>
-            <mat-label>Enter a selected country</mat-label>
+        <mat-form-field>
+            <mat-label>Search country code or country name</mat-label>
             <input 
                 matInput 
-                placeholder="FI">
+                placeholder="FI or Finland"
+                name="country"
+                [formControl]="searchCountry">
             <mat-icon matPrefix>search</mat-icon>
-        </mat-form-field> -->
+        </mat-form-field>
     <button 
         mat-flat-button
-        color="primary"
+        [disabled]="!searchCity.value || searchCity.hasError('required') || searchCity.hasError('pattern')"
         (click)="searchWeathers()">
         Search
     </button>
-
-    
 </form>
 

@@ -17,10 +17,10 @@ export class WeathersService {
     private http: HttpClient
   ) { }
 
-  getWeathers(cityName: string, countryCode?: string): Observable<any> {
+  getWeathers(cityName: string | null, countryCode?: string | null): Observable<any> {
     if(countryCode) {
       return this.http.get(`${this.url}${cityName},${countryCode}&appid=${this.apiKey}`);  
-    }
+    } 
     return this.http.get(`${this.url}${cityName}&appid=${this.apiKey}`);
   }
 
