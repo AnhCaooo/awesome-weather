@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WeathersService } from 'src/app/services/weathers.service';
 
 @Component({
   selector: 'app-weathers',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WeathersComponent implements OnInit {
 
-  constructor() { }
+  weathers: any[] = [];
+  count: number = 0;
+
+  constructor(
+    private weathersService: WeathersService
+    ) { }
 
   ngOnInit(): void {
+    this.weathersService.currentResults
+    .subscribe({
+      next: (parameter: any) => {
+        this.weathers = parameter.list;
+        this.count = parameter.count;
+      },
+    })
   }
 
 }

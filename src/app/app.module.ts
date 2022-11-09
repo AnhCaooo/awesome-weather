@@ -16,6 +16,7 @@ import { MainSiteComponent } from './components/main-site/main-site.component';
 import { SearchComponent } from './components/main-site/search/search.component';
 import { AboutSiteComponent } from './components/about-site/about-site.component';
 import { WeathersComponent } from './components/main-site/weathers/weathers.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { WeathersComponent } from './components/main-site/weathers/weathers.comp
     MatCardModule,
     HttpClientModule,
     MatTableModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

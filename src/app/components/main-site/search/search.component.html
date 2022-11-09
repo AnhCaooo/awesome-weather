@@ -3,19 +3,22 @@
             <mat-label>Search for a city</mat-label>
             <input 
                 matInput 
-                placeholder="Helsinki">
+                placeholder="Helsinki"
+                name="location"
+                [(ngModel)]="searchCity">
             <mat-icon matPrefix>search</mat-icon>
         </mat-form-field>
-        <mat-form-field>
+        <!-- <mat-form-field>
             <mat-label>Enter a selected country</mat-label>
             <input 
                 matInput 
                 placeholder="FI">
             <mat-icon matPrefix>search</mat-icon>
-        </mat-form-field>
+        </mat-form-field> -->
     <button 
         mat-flat-button
-        color="primary">
+        color="primary"
+        (click)="searchWeathers()">
         Search
     </button>
 

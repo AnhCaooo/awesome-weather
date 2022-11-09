@@ -1,121 +1,52 @@
-<!-- <ng-container *ngFor="let weather of weathers">
-    <tr>
-        <td>{{weather.weather[0].main}} with {{weather.weather[0].description}} </td>
-        <td>{{weather.main.temp}} degree</td>
-        <td>{{weather.main.feels_like}}</td>
-        <td>{{weather.name}}</td>
-        <td>{{weather.sys.country}}</td>
-    </tr>    
-</ng-container> -->
-
-
 <div class="results">
     <div class="info">
-        <span>There are 5 found locations. You can add a country to check the weather at one location</span>
-
+        <span>There are {{count}} duplicate city with different countries. You can add a country to check exactly the weather at that location</span>
     </div>
 
-    <mat-card class="result">
-        <mat-card-header style="background-color: gold;">
-            <mat-card-title>Helsinki - FI</mat-card-title>
-            <mat-card-subtitle>
-                Sunny
-            </mat-card-subtitle>
-
-        </mat-card-header>
-        <mat-card-content>
-            <div>
-                <span>this is tempature and its icon</span>
-                <span>13 degree</span>
-                <mat-icon>sunny</mat-icon>
-            </div>
-
-            <table>
-                <tr>
-                    <th>
-                        <span>this is wind info and its icon</span>
-                        <mat-icon>air</mat-icon>
-                    </th>
-                    <th>
-                        <span>this is cloud info and its icon</span>
-                        <mat-icon>cloud</mat-icon>
-                    </th>
-                    <th>
-                        <span>this is wind info and its icon</span>
-                        <mat-icon>shower</mat-icon>
-                    </th>
-                    <th>
-                        <span>this is snow info and its icon</span>
-                        <mat-icon>ac_unit</mat-icon>
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                        <span>Wind: 6.69 meter/sec</span>
-                    </td>
-                    <td>
-                        <span>Cloudiness: 20%</span>
-                    </td>
-                    <td>
-                        <span>Rain precipitation 0%</span>
-                    </td>
-                    <td>
-                        <span>Snow precipitation 0%</span>
-                    </td>
-                </tr>
-            </table>
-        </mat-card-content>
-    </mat-card>
-
-    <mat-card class="result">
-        <mat-card-header style="background-color: gold;">
-            <mat-card-title>Helsinki - FI</mat-card-title>
-            <mat-card-subtitle>
-                Sunny
-            </mat-card-subtitle>
-
-        </mat-card-header>
-        <mat-card-content>
-            <div>
-                <span>this is tempature and its icon</span>
-                <span>13 degree</span>
-                <mat-icon>sunny</mat-icon>
-            </div>
-
-            <table>
-                <tr>
-                    <th>
-                        <span>this is wind info and its icon</span>
-                        <mat-icon>air</mat-icon>
-                    </th>
-                    <th>
-                        <span>this is cloud info and its icon</span>
-                        <mat-icon>cloud</mat-icon>
-                    </th>
-                    <th>
-                        <span>this is wind rain and its icon</span>
-                        <mat-icon>shower</mat-icon>
-                    </th>
-                    <th>
-                        <span>this is snow info and its icon</span>
-                        <mat-icon>ac_unit</mat-icon>
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                        <span>Wind: 6.69 meter/sec</span>
-                    </td>
-                    <td>
-                        <span>Cloudiness: 20%</span>
-                    </td>
-                    <td>
-                        <span>Rain precipitation 0%</span>
-                    </td>
-                    <td>
-                        <span>Snow precipitation 0%</span>
-                    </td>
-                </tr>
-            </table>
-        </mat-card-content>
-    </mat-card>
+    <div class="result" *ngFor="let weather of weathers; index as i">
+        <mat-card class="result">
+            <mat-card-header style="background-color: gold;">
+                <mat-card-title>{{weather.name}} - {{weather.sys.country}}</mat-card-title>
+                <mat-card-subtitle>
+                    <span>{{weather.weather[0].main}}</span>
+                    <span>this is tempature and its dynamic icon</span>
+                    <span>{{weather.main.temp}} degree</span>
+                    <mat-icon>sunny</mat-icon>
+                </mat-card-subtitle>
+    
+            </mat-card-header>
+            <mat-card-content>
+                <table>
+                    <tr>
+                        <th class="text-center">
+                            <mat-icon>air</mat-icon>
+                        </th>
+                        <th class="text-center">
+                            <mat-icon>cloud</mat-icon>
+                        </th>
+                        <th class="text-center">
+                            <mat-icon>shower</mat-icon>
+                        </th>
+                        <th class="text-center">
+                            <mat-icon>ac_unit</mat-icon>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Speed:</strong> {{weather.wind.speed}} m/s
+                        </td>
+                        <td>
+                            <strong>Cloudiness:</strong> {{weather.clouds.all}} %
+                        </td>
+                        <td>
+                            <strong>Rain precipitation</strong> {{weather.rain}} %
+                        </td>
+                        <td>
+                            <strong>Snow precipitation</strong> {{weather.snow}}%
+                        </td>
+                    </tr>
+                </table>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </div>
