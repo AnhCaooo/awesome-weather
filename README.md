@@ -1,6 +1,10 @@
 # AwesomeWeather
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.8.
+Use this project for checking weather forecast based on city name, country code.
+
+## Preparations
+
+Create and insert your API key to /src/assets/config.ts
 
 ## Development server
 
