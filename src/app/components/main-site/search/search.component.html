@@ -9,7 +9,7 @@
                 [formControl]="searchCity">
             <mat-icon matPrefix>search</mat-icon>
             <mat-error *ngIf="searchCity.hasError('required')">You should search for a city first!</mat-error>
-            <mat-error *ngIf="searchCity.hasError('pattern')">City name must follow this pattern [a-zA-z]!</mat-error>
+            <!-- <mat-error *ngIf="searchCity.hasError('pattern')">City name must follow this pattern [a-zA-z]!</mat-error> -->
         </mat-form-field>
         <mat-form-field>
             <mat-label>Search country code or country name</mat-label>

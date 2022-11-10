@@ -1,30 +1,14 @@
-.mat-card-header{
-    padding:5px !important;
+mat-card::ng-deep.mat-card-header-text {
+    width: 100%;
 }
 
-.mat-card-title {
-    font-size: 30px !important;
-}
-
-.mat-card{
-    padding: 0 !important;
-
-}
-
-.mat-card-content{
-    padding: 5px !important;
+mat-card {
+    margin-bottom: 30px;
+    background-color: #dcedff;
 }
 
 .results {
     margin-top: 50px;
-}
-
-.result {
-    margin-bottom: 30px;
-    max-width: 600px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .info {
@@ -33,4 +17,36 @@
 
 .table td {
     text-align: center;
-    }
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-row div {
+    flex: 50%;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.temp {
+    background: lightblue;
+    color: black;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.outlook {
+    color: black;
+    background: rgba(0,0,0,0.1);
+}
+
+.big-text {
+    font-size: 30px;
+}
+
