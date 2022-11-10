@@ -1,5 +1,31 @@
-<form class="searching-form">
-        <mat-form-field class="">
+<div class="switch-container">
+    <button mat-icon-button [matMenuTriggerFor]="unitMenu" aria-label="Switch between metric and imperial units">
+        <mat-icon>pending</mat-icon>
+    </button>
+    <mat-menu #unitMenu="matMenu">
+        <button mat-menu-item>
+            <div class="single-unit-container">
+                <span>Celcius</span>
+                <span><strong>°C</strong></span>
+            </div>
+        </button>
+        <button mat-menu-item>
+            <div class="single-unit-container">
+                <span>Fahrenheit</span>
+                <span><strong>°F</strong></span>
+            </div>
+        </button>
+        <button mat-menu-item>
+            <div class="single-unit-container">
+                <span>Kelvin</span>
+                <span><strong>K</strong></span>  
+            </div>
+        </button>
+      </mat-menu>
+</div>
+<div class="searching-container">
+    <form class="searching-form">
+        <mat-form-field>
             <mat-label>Search for a city</mat-label>
             <input 
                 matInput 
@@ -9,7 +35,7 @@
                 [formControl]="searchCity">
             <mat-icon matPrefix>search</mat-icon>
             <mat-error *ngIf="searchCity.hasError('required')">You should search for a city first!</mat-error>
-            <!-- <mat-error *ngIf="searchCity.hasError('pattern')">City name must follow this pattern [a-zA-z]!</mat-error> -->
+            <mat-error *ngIf="searchCity.hasError('pattern')">City name must follow this pattern [a-zA-z]!</mat-error>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Search country code or country name</mat-label>
@@ -20,11 +46,11 @@
                 [formControl]="searchCountry">
             <mat-icon matPrefix>search</mat-icon>
         </mat-form-field>
-    <button 
-        mat-flat-button
-        [disabled]="!searchCity.value || searchCity.hasError('required') || searchCity.hasError('pattern')"
-        (click)="searchWeathers()">
-        Search
-    </button>
-</form>
-
+        <button 
+            mat-flat-button
+            [disabled]="!searchCity.value || searchCity.hasError('required') || searchCity.hasError('pattern')"
+            (click)="searchWeathers()">
+            Search
+        </button>
+    </form>
+</div>
