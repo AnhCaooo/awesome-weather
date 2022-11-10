@@ -8,10 +8,13 @@ mat-card {
 }
 
 .results {
-    margin-top: 50px;
+    width: 700px;
+    margin: 0 auto;
+    padding-right: 70px;
 }
 
 .info {
+    display: block;
     margin-bottom: 20px;
 }
 
@@ -32,8 +35,8 @@ mat-card {
 }
 
 .temp {
-    background: lightblue;
-    color: black;
+    background: #0000a0;
+    color: white;
     margin-right: 10px;
     display: flex;
     flex-direction: column;
@@ -42,7 +45,8 @@ mat-card {
 }
 
 .outlook {
-    color: black;
+    color: #0000a0;
+    font-size: 15px;
     background: rgba(0,0,0,0.1);
 }
 
