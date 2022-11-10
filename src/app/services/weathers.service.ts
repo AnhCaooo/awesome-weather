@@ -8,7 +8,7 @@ import { openWeatherApiKey } from 'src/assets/config';
 })
 export class WeathersService {
   apiKey = openWeatherApiKey;
-  url = 'http://api.openweathermap.org/data/2.5/find?q=';
+  url = 'http://api.openweathermap.org/data/2.5/find?';
 
   private weatherResults = new Subject();
   currentResults = this.weatherResults.asObservable();
@@ -17,11 +17,13 @@ export class WeathersService {
     private http: HttpClient
   ) { }
 
-  getWeathers(cityName: string | null, countryCode?: string | null): Observable<any> {
-    if(countryCode) {
-      return this.http.get(`${this.url}${cityName},${countryCode}&appid=${this.apiKey}`);  
-    } 
-    return this.http.get(`${this.url}${cityName}&appid=${this.apiKey}`);
+
+  getWeathers(location: string | null, unit?: string | null): Observable<any> {
+    if (unit) {
+      return this.http.get(`${this.url}q=${location}&appid=${this.apiKey}&units=${unit}`);  
+
+    }
+    return this.http.get(`${this.url}q=${location}&appid=${this.apiKey}`);
   }
 
   passWeathers(weatherList: any): void{

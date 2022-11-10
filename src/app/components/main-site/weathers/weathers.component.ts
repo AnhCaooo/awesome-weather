@@ -10,6 +10,7 @@ export class WeathersComponent implements OnInit {
 
   weathers: any[] = [];
   count: number = 0;
+  unit: string = 'K'
 
   constructor(
     private weathersService: WeathersService
@@ -19,8 +20,8 @@ export class WeathersComponent implements OnInit {
     this.weathersService.currentResults
     .subscribe({
       next: (parameter: any) => {
-        this.weathers = parameter.list;
-        this.count = parameter.count;
+          this.weathers = parameter.list;
+          this.count = parameter.count;
       },
     })
   }

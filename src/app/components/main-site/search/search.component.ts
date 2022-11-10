@@ -8,8 +8,9 @@ import {FormControl, Validators} from '@angular/forms';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  searchCity = new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+')]);
-  searchCountry = new FormControl('');
+  location = new FormControl('', [Validators.required]);
+  metricUnit = 'metric';
+  imperialUnit = 'imperial';
 
   constructor(
     private weathersService: WeathersService
@@ -18,15 +19,37 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  searchWeathers(): void {
-    this.weathersService.getWeathers(this.searchCity.value, this.searchCountry.value).subscribe({
-      next: data => {
-        this.weathersService.passWeathers(data);
-      }, 
-      error: error => {
-        console.log('Error from Weather Service:', error);
-      }
-    });
+  searchWeathers(unit?: string): void {
+    if (unit) {
+      this.weathersService.getWeathers(this.location.value, unit).subscribe({
+        next: data => {
+          this.weathersService.passWeathers(data);
+        }, 
+        error: error => {
+          console.log('Error from Weather Service:', error);
+        }
+      });
+    } else {
+      this.weathersService.getWeathers(this.location.value).subscribe({
+        next: data => {
+          this.weathersService.passWeathers(data);
+        }, 
+        error: error => {
+          console.log('Error from Weather Service:', error);
+        }
+      });
+    }
+
   }
 
+  selectMetricUnits() {
+    console.log('selectMetricUnits was clicked');
+    this.searchWeathers(this.metricUnit);
+  }
+
+  selectImperialUnits() {
+    console.log('selectImperialUnits was clicked');
+    this.searchWeathers(this.imperialUnit);
+
+  }
 }

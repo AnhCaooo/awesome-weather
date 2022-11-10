@@ -39,3 +39,7 @@ mat-form-field {
 ::ng-deep.mat-menu-panel {
     max-width: none !important;
 }
+
+::ng-deep.mat-tooltip {
+    font-size: 12px !important;
+}
