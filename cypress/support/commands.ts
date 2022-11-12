@@ -53,6 +53,8 @@ declare namespace Cypress {
         getAndCheckSwitchUnitButtonShouldBeEnabled(): void;
         getSwitchUnitButtonAndSwitchUnit(buttonName: string, selectionName: string): void;
         getAndCheckTheInputPlaceholder(placeholder: string): void;
+        getTheTextOfSwitchUnitButton(selectionName: string): void;
+        getTheErrorTextWhenViolateTheInpuRegex(): void;
     }
 }
 
@@ -61,8 +63,9 @@ Cypress.Commands.add("getAndCheckSearchButtonShouldBeDisabled", () => {
 });
 
 Cypress.Commands.add("getAndCheckSwitchUnitButtonShouldBeDisabled", () => {
-    cy.get('[data-cy="standard"]').should('be.disabled');
+    cy.get('[data-cy="switchUnit"]').should('be.disabled');
 });
+
 
 Cypress.Commands.add("getAndTypeInLocationField", (location) => {
     cy.get('[data-cy="location-field"]').click().clear().type(location);
@@ -78,16 +81,24 @@ Cypress.Commands.add("getAndCheckWeatherCardId", (idCard) => {
 });
 
 Cypress.Commands.add("getAndCheckSwitchUnitButtonShouldBeEnabled", () => {
-    cy.get('[data-cy="standard"]').should('be.enabled');
+    cy.get('[data-cy="switchUnit"]').should('be.enabled');
 });
 
 Cypress.Commands.add("getSwitchUnitButtonAndSwitchUnit", (buttonName, selectionName) => {
-    cy.get(`[data-cy="${buttonName}"]`).click().then(() => {
-        cy.get(`[data-cy="${selectionName}"]`).click();
-    });
+    cy.getTheTextOfSwitchUnitButton(buttonName);
+    cy.get(`[data-cy="${selectionName}"]`).click();
+    cy.getTheTextOfSwitchUnitButton(selectionName);
 });
 
 Cypress.Commands.add("getAndCheckTheInputPlaceholder", (placeholderText) => {
     cy.get('[data-cy="location-field"]').should('have.attr', 'placeholder', placeholderText);
+});
+
+Cypress.Commands.add("getTheTextOfSwitchUnitButton", (selectionName) => {
+    cy.get('[data-cy="switchUnit"]').should('contain', selectionName.charAt(0).toUpperCase() + selectionName.slice(1)).click();
+});
+
+Cypress.Commands.add("getTheErrorTextWhenViolateTheInpuRegex", () => {
+    cy.get('[data-cy="error-text"]').should('contain', 'You have to type at least 3 letters, and you are only allowed to type text and comma only (no digits, special characters).');
 });
 

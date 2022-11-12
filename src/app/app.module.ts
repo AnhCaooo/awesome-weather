@@ -15,6 +15,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 // Components
 import { AppComponent } from './app.component';
@@ -46,7 +47,8 @@ import { WeathersComponent } from './components/main-site/weathers/weathers.comp
     ReactiveFormsModule,
     MatGridListModule,
     MatMenuModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

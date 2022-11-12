@@ -3,7 +3,7 @@
         <button mat-stroked-button
                 [disabled]="!enableSwitchUnitButton"
                 [matMenuTriggerFor]="unitMenu" 
-                [attr.data-cy]="selectedUnit"
+                data-cy="switchUnit"
                 matTooltip="Switch between standard, metric and imperial units"
                 aria-label="Switching between standard, metric and imperial units">
             {{selectedUnit | titlecase}}
@@ -49,7 +49,7 @@
                     required
                     [formControl]="location"
                     data-cy="location-field">
-                <mat-error *ngIf="location.hasError('pattern')">You have to type at least 3 letters, and you are only allowed to type text and comma only (no digits, special characters).</mat-error>
+                <mat-error *ngIf="location.hasError('pattern')" data-cy="error-text">You have to type at least 3 letters, and you are only allowed to type text and comma only (no digits, special characters).</mat-error>
                 <mat-icon matPrefix>search</mat-icon>
                 <mat-icon matSuffix
                     matTooltipPosition="right"
