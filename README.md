@@ -8,6 +8,10 @@ Create and insert your API key to /src/assets/config.ts.
 
 `export const openWeatherApiKey = '<YOUR_OPENWEATHER_API_KEY>';`
 
+Install npm package before use this application.
+
+`npm install`
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
@@ -22,11 +26,11 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test` to execute the unit tests via [Cypress](https://www.cypress.io/).
 
-## Running end-to-end tests
+## Running end-to-end tests with Cypress
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Run `ng e2e` to execute the end-to-end tests via [Cypress](https://www.cypress.io/). To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
 ## Further help
 

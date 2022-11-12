@@ -1,75 +1,84 @@
-<div class="switch-container">
-    <button mat-stroked-button
-            [disabled]="!enableSwitchUnitButton"
-            [matMenuTriggerFor]="unitMenu" 
-            matTooltip="Switch between standard, metric and imperial units"
-            aria-label="Switching between standard, metric and imperial units">
-        {{selectedUnit | titlecase}}
-        </button>
-    <mat-menu #unitMenu="matMenu">
-        <button 
-            mat-menu-item
-            (click)="searchWeathers(standardUnit)">
-            <div class="single-unit-container">
-                <span><strong>Standard</strong></span>
-                <span>K, m/s</span>
-            </div>
-        </button>
-        <button 
-            mat-menu-item
-            (click)="searchWeathers(metricUnit)">
-            <div class="single-unit-container">
-                <span><strong>Metric</strong></span>
-                <span>°C, m/s</span>
-            </div>
-        </button>
-        <button 
-            mat-menu-item
-            (click)="searchWeathers(imperialUnit)">
-            <div class="single-unit-container">
-                <span><strong>Imperial</strong></span>
-                <span>°F, mph</span>
-            </div>
-        </button>
-      </mat-menu>
-</div>
-<div class="searching-container">
-    <form class="searching-form" #searchingForm="ngForm">
-        <mat-form-field>
-            <mat-label>Search for a city or country</mat-label>
-            <input 
-                matInput 
-                placeholder="Helsinki"
-                name="city"
-                required
-                [formControl]="location">
-            <mat-error *ngIf="location.hasError('pattern')">You are only allowing text characters and comma only</mat-error>
-            <mat-icon matPrefix>search</mat-icon>
-            <mat-icon matSuffix
-                matTooltipPosition="right"
-                matTooltip="If you are looking for the weather at specific location, your searching query should like this: {city name},{country code}">
-                help
-            </mat-icon>
-        </mat-form-field>
-        <button 
-            mat-flat-button
-            [disabled]="!location.value || location.hasError('pattern')"
-            (click)="searchWeathers()">
-            Search
-        </button>
-        <!-- <div>
+<div style="display: flex; flex-direction: column;">
+    <div class="switch-container">
+        <button mat-stroked-button
+                [disabled]="!enableSwitchUnitButton"
+                [matMenuTriggerFor]="unitMenu" 
+                [attr.data-cy]="selectedUnit"
+                matTooltip="Switch between standard, metric and imperial units"
+                aria-label="Switching between standard, metric and imperial units">
+            {{selectedUnit | titlecase}}
+            </button>
+        <mat-menu #unitMenu="matMenu">
             <button 
-            mat-flat-button
-            [disabled]="!location.value || location.hasError('pattern')"
-            (click)="searchWeathers()">
-            Search
-        </button>
-        <button 
-            mat-flat-button
-            [disabled]="!location.value || location.hasError('pattern')"
-            (click)="searchWeathers()">
-            Clear all
-        </button>
-        </div> -->
-    </form>
+                mat-menu-item
+                data-cy="Standard"
+                (click)="searchWeathers(standardUnit)">
+                <div class="single-unit-container">
+                    <span><strong>Standard</strong></span>
+                    <span>K, m/s</span>
+                </div>
+            </button>
+            <button 
+                mat-menu-item
+                data-cy="Metric"
+                (click)="searchWeathers(metricUnit)">
+                <div class="single-unit-container">
+                    <span><strong>Metric</strong></span>
+                    <span>°C, m/s</span>
+                </div>
+            </button>
+            <button 
+                mat-menu-item
+                data-cy="Imperial"
+                (click)="searchWeathers(imperialUnit)">
+                <div class="single-unit-container">
+                    <span><strong>Imperial</strong></span>
+                    <span>°F, mph</span>
+                </div>
+            </button>
+          </mat-menu>
+    </div>
+    <div class="searching-container">
+        <form class="searching-form" #searchingForm="ngForm">
+            <mat-form-field>
+                <mat-label>Search for a city or country</mat-label>
+                <input 
+                    matInput 
+                    placeholder="Helsinki"
+                    name="city"
+                    required
+                    [formControl]="location"
+                    data-cy="location-field">
+                <mat-error *ngIf="location.hasError('pattern')">You are only allowing text characters and comma only</mat-error>
+                <mat-icon matPrefix>search</mat-icon>
+                <mat-icon matSuffix
+                    matTooltipPosition="right"
+                    matTooltip="If you are looking for the weather at specific location, your searching query should like this: {city name},{country code}">
+                    help
+                </mat-icon>
+            </mat-form-field>
+            <button 
+                mat-flat-button
+                [disabled]="!location.value || location.hasError('pattern')"
+                data-cy="search-button"
+                (click)="searchWeathers()">
+                Search
+            </button>
+            <!-- <div>
+                <button 
+                mat-flat-button
+                [disabled]="!location.value || location.hasError('pattern')"
+                (click)="searchWeathers()">
+                Search
+            </button>
+            <button 
+                mat-flat-button
+                [disabled]="!location.value || location.hasError('pattern')"
+                (click)="searchWeathers()">
+                Clear all
+            </button>
+            </div> -->
+        </form>
+    </div>
+    
 </div>
