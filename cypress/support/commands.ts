@@ -43,20 +43,25 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 
-declare namespace Cypress {
-    interface Chainable<Subject = any> {
-        getAndCheckSearchButtonShouldBeDisabled(): void;
-        getAndCheckSwitchUnitButtonShouldBeDisabled(): void;
-        getAndTypeInLocationField(location: string): void;
-        checkEnabledAndClickSearchButton(): void;
-        getAndCheckWeatherCardId(idCard: string): void;
-        getAndCheckSwitchUnitButtonShouldBeEnabled(): void;
-        getSwitchUnitButtonAndSwitchUnit(buttonName: string, selectionName: string): void;
-        getAndCheckTheInputPlaceholder(placeholder: string): void;
-        getTheTextOfSwitchUnitButton(selectionName: string): void;
-        getTheErrorTextWhenViolateTheInpuRegex(): void;
+declare global {
+    namespace Cypress {
+        interface Chainable<Subject> {
+            getAndCheckSearchButtonShouldBeDisabled(): void;
+            getAndCheckSwitchUnitButtonShouldBeDisabled(): void;
+            getAndTypeInLocationField(location: string): void;
+            checkEnabledAndClickSearchButton(): void;
+            getAndCheckWeatherCardId(idCard: string): void;
+            getAndCheckSwitchUnitButtonShouldBeEnabled(): void;
+            getSwitchUnitButtonAndSwitchUnit(buttonName: string, selectionName: string): void;
+            getAndCheckTheInputPlaceholder(placeholder: string): void;
+            getTheTextOfSwitchUnitButton(selectionName: string): void;
+            getTheErrorTextWhenViolateTheInpuRegex(): void;
+            getAndClickHelpIcon(): void;
+            getNoWeathersAvailable(): void;
+        }
     }
-}
+} 
+    
 
 Cypress.Commands.add("getAndCheckSearchButtonShouldBeDisabled", () => {
     cy.get('[data-cy="search-button"]').should('be.disabled');
@@ -102,3 +107,13 @@ Cypress.Commands.add("getTheErrorTextWhenViolateTheInpuRegex", () => {
     cy.get('[data-cy="error-text"]').should('contain', 'You have to type at least 3 letters, and you are only allowed to type text and comma only (no digits, special characters).');
 });
 
+Cypress.Commands.add("getAndClickHelpIcon", () => {
+    cy.get('[data-cy="help-icon"]').click();
+});
+
+Cypress.Commands.add("getNoWeathersAvailable", () => {
+    cy.get('[data-cy="no-value"]').should('contain', 'No weathers available');
+    // cy.get('[data-cy="help-icon"]').click();
+});
+
+export {}

@@ -1,6 +1,18 @@
-# AwesomeWeather
+# Awesome Weather
 
-Use this project for checking weather forecast based on city name, country code.
+Angular web application that can be used for searching information about current weather conditions for a specific city.
+
+## Description
+
+The app can do:
+
+- allow user to enter a city name, country code
+  - user is only able to enter text characters and comma. No special characters, digits are allowed and the minimum length is 3.
+  - in case a user enters a city name which is not unique and exist in multiple countries (ex: London), they will receive the info for clarify their selection. There is an instruction next to input field to guide how to enter a city name with country code
+  - in case a user enters a city name that is not existed, the application will print 'No weathers available'.
+- posibility to switch between standard unit (Kelvin, m/s), metric unit (Celcius, m/s) and imperial unit (Fahrenheit, mph)
+- selected location and units will be stored in user's browser and prepopulated in the next time they visit. (Now, the posibility to change units after user close and open is not implemented yet.)
+- unit test (component test) and e2e test are available. Both testing methods are using Cypress
 
 ## Preparations
 
@@ -20,17 +32,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Running unit tests and end-to-end tests with Cypress
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Cypress](https://www.cypress.io/).
-
-## Running end-to-end tests with Cypress
-
-Run `ng e2e` to execute the end-to-end tests via [Cypress](https://www.cypress.io/). To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Run `ng e2e` to execute the unit tests and end-to-end tests via [Cypress](https://www.cypress.io/). To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
 ## Further help
 

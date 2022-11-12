@@ -6,12 +6,13 @@ describe('Test weather application', () => {
 
   it('Search weather at London (no country code) will have multiple value', () => {
     cy.getAndCheckSearchButtonShouldBeDisabled();
+    cy.getAndCheckSearchButtonShouldBeDisabled();
     cy.getAndCheckSwitchUnitButtonShouldBeDisabled();
     cy.getAndTypeInLocationField('London');
     cy.checkEnabledAndClickSearchButton();
     // London-GB
     cy.getAndCheckWeatherCardId('2643743');
-    // London-
+    // London-CA
     cy.getAndCheckWeatherCardId('6058560')
     cy.getAndCheckSwitchUnitButtonShouldBeEnabled();
     cy.getSwitchUnitButtonAndSwitchUnit('standard', 'imperial');
@@ -26,5 +27,51 @@ describe('Test weather application', () => {
     cy.getAndCheckWeatherCardId('2643743');
     cy.getAndCheckSwitchUnitButtonShouldBeEnabled();
     cy.getSwitchUnitButtonAndSwitchUnit('standard', 'imperial');
+    cy.get('[data-cy="no-value"]').should('not.exist');
+  });
+
+  it('Search weather at unvailable location', () => {
+    cy.getAndCheckSearchButtonShouldBeDisabled();
+    cy.getAndCheckSwitchUnitButtonShouldBeDisabled();
+    cy.getAndTypeInLocationField('cypressTesting');
+    cy.checkEnabledAndClickSearchButton();
+    cy.getNoWeathersAvailable();
+  });
+
+  it('switch unit button will be disabled when user does not click search button, and enabled when user clicks search button', () => {
+    cy.getAndCheckSwitchUnitButtonShouldBeDisabled();
+    cy.getAndCheckSearchButtonShouldBeDisabled();
+    cy.getAndCheckTheInputPlaceholder('Helsinki');
+    cy.getAndTypeInLocationField('London,GB');
+    cy.checkEnabledAndClickSearchButton();
+    cy.getAndCheckSwitchUnitButtonShouldBeEnabled();
+  });
+
+  it('search for weather in London,GB then change the unit', () => {
+    cy.getAndCheckTheInputPlaceholder('Helsinki');
+    cy.getAndTypeInLocationField('London,GB');
+    cy.checkEnabledAndClickSearchButton();
+    cy.getSwitchUnitButtonAndSwitchUnit('standard', 'metric');
+  });
+
+  it('should get warning and cannot search when type less than 3 characters', () => {
+    cy.getAndCheckTheInputPlaceholder('Helsinki');
+    cy.getAndTypeInLocationField('Lo');
+    cy.getAndClickHelpIcon();
+    cy.getTheErrorTextWhenViolateTheInpuRegex();
+  });
+
+  it('should get warning and cannot search when type blank space: London, GB', () => {
+    cy.getAndCheckTheInputPlaceholder('Helsinki');
+    cy.getAndTypeInLocationField('London, GB');
+    cy.getAndClickHelpIcon();
+    cy.getTheErrorTextWhenViolateTheInpuRegex()
+  });
+
+  it('should get warning and cannot search when type special characters', () => {
+    cy.getAndCheckTheInputPlaceholder('Helsinki');
+    cy.getAndTypeInLocationField('London,GB?');
+    cy.getAndClickHelpIcon();
+    cy.getTheErrorTextWhenViolateTheInpuRegex();
   });
 })

@@ -1,13 +1,13 @@
 <div class="results">
     <div class="info">
-        <div *ngIf="localDataStorage.count > 1">
+        <div *ngIf="localDataStorage.count > 1" data-cy="multivalue">
             <span>There are <strong>{{localDataStorage.count}} duplicate locations</strong> based on your initial search. Follow the searching instructions by the searching field to find exact the weather at your desired location. 
             </span>
         </div>
     </div>
 
     <div *ngIf="localDataStorage.count === 0; else availableWeathersBlock">
-        <span class="center-info-text">No weathers available</span>
+        <span class="center-info-text" data-cy="no-value">No weathers available</span>
     </div>
     <ng-template #availableWeathersBlock>
         <div class="result" *ngFor="let weather of localDataStorage.list; index as i">
