@@ -34,7 +34,7 @@
       </mat-menu>
 </div>
 <div class="searching-container">
-    <form class="searching-form">
+    <form class="searching-form" #searchingForm="ngForm">
         <mat-form-field>
             <mat-label>Search for a city or country</mat-label>
             <input 
@@ -57,5 +57,19 @@
             (click)="searchWeathers()">
             Search
         </button>
+        <!-- <div>
+            <button 
+            mat-flat-button
+            [disabled]="!location.value || location.hasError('pattern')"
+            (click)="searchWeathers()">
+            Search
+        </button>
+        <button 
+            mat-flat-button
+            [disabled]="!location.value || location.hasError('pattern')"
+            (click)="searchWeathers()">
+            Clear all
+        </button>
+        </div> -->
     </form>
 </div>

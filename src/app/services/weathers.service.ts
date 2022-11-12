@@ -10,6 +10,8 @@ export class WeathersService {
   apiKey = openWeatherApiKey;
   url = 'http://api.openweathermap.org/data/2.5/find?';
 
+  weathersLocalStorageKey = 'weathers';
+  localStorageData: any = '';
   private weatherResults = new Subject();
   currentResults = this.weatherResults.asObservable();
 
@@ -27,5 +29,19 @@ export class WeathersService {
 
   passWeathers(weatherList: any): void{
     this.weatherResults.next(weatherList);
+  }
+
+  saveWeathersInLocalStorage(weatherData: any) {
+    localStorage.setItem(this.weathersLocalStorageKey, JSON.stringify(weatherData));
+  }
+
+  readWeathersInLocalStorage() {
+    let weathersLocalStorage: any = localStorage.getItem(this.weathersLocalStorageKey);
+    this.localStorageData = JSON.parse(weathersLocalStorage);
+    return this.localStorageData;
+  }
+
+  clearWeathersInLocalStorage() {
+    localStorage.removeItem(this.weathersLocalStorageKey);
   }
 }

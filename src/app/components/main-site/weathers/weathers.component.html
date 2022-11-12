@@ -1,12 +1,12 @@
 <div class="results">
     <div class="info">
-        <div *ngIf="count > 1 && count !== 0 ;">
-            <span>There are <strong>{{count}} duplicate locations</strong> based on your initial search. Follow the searching instructions by the searching field to find exact the weather at your desired location. 
+        <div *ngIf="localDataStorage.count > 1 && localDataStorage.count !== 0 ;">
+            <span>There are <strong>{{localDataStorage.count}} duplicate locations</strong> based on your initial search. Follow the searching instructions by the searching field to find exact the weather at your desired location. 
             </span>
         </div>
     </div>
 
-    <div class="result" *ngFor="let weather of weathers;">
+    <div class="result" *ngFor="let weather of localDataStorage.list;">
         <mat-card class="mat-elevation-z5">
             <mat-card-header>
                 <mat-card-title>{{weather.name}} - {{weather.sys.country}}</mat-card-title>
