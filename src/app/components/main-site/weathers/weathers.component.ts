@@ -26,4 +26,7 @@ export class WeathersComponent implements OnInit {
     })
   }
 
+  showImageIcon(imageCode: string) {
+    return `http://openweathermap.org/img/wn/${imageCode}@2x.png`;
+  }
 }

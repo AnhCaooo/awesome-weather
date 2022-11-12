@@ -11,6 +11,9 @@ export class SearchComponent implements OnInit {
   location = new FormControl('', [Validators.required]);
   metricUnit = 'metric';
   imperialUnit = 'imperial';
+  standardUnit = 'standard';
+  selectedUnit: string | undefined = this.standardUnit;
+  enableSwitchUnitButton = false; 
 
   constructor(
     private weathersService: WeathersService
@@ -21,6 +24,7 @@ export class SearchComponent implements OnInit {
   
   searchWeathers(unit?: string): void {
     if (unit) {
+      this.selectedUnit = unit;
       this.weathersService.getWeathers(this.location.value, unit).subscribe({
         next: data => {
           this.weathersService.passWeathers(data);
@@ -39,17 +43,7 @@ export class SearchComponent implements OnInit {
         }
       });
     }
-
+    this.enableSwitchUnitButton = true;
   }
 
-  selectMetricUnits() {
-    console.log('selectMetricUnits was clicked');
-    this.searchWeathers(this.metricUnit);
-  }
-
-  selectImperialUnits() {
-    console.log('selectImperialUnits was clicked');
-    this.searchWeathers(this.imperialUnit);
-
-  }
 }

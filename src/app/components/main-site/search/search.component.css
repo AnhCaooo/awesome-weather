@@ -20,6 +20,12 @@
     font-size: 16px;
 }
 
+.mat-stroke-button {
+    color: #0000a0;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
 mat-form-field {
     margin-bottom: 8px;
 }
@@ -33,7 +39,7 @@ mat-form-field {
 .single-unit-container {
     display: flex;
     justify-content: space-between;
-    width: 100px;
+    width: 120px;
 }
 
 ::ng-deep.mat-menu-panel {

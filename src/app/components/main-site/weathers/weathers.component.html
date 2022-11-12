@@ -12,13 +12,13 @@
     
             <mat-card-content>
                 <div class="flex-row">
-                    <div class="temp">
-                        <span class="big-text">{{weather.main.temp}} °K</span>
+                    <div class="temp">                        
+                        <span class="big-text">{{weather.main.temp}} degree</span>
                         <span>Feels like </span>
-                        <span>{{weather.main.feels_like}} °{{unit}}</span>
+                        <span>{{weather.main.feels_like}} degree</span>
                     </div>
                     <div class="outlook">
-                        <img src="http://openweathermap.org/img/wn/02d@2x.png" />
+                        <img [src]="showImageIcon(weather.weather[0].icon)" alt="weather-image-icon"/>
                         <span>{{weather.weather[0].description | titlecase}}</span>
                     </div>
               </div>

@@ -20,8 +20,7 @@ export class WeathersService {
 
   getWeathers(location: string | null, unit?: string | null): Observable<any> {
     if (unit) {
-      return this.http.get(`${this.url}q=${location}&appid=${this.apiKey}&units=${unit}`);  
-
+      return this.http.get(`${this.url}q=${location}&appid=${this.apiKey}&units=${unit}`);
     }
     return this.http.get(`${this.url}q=${location}&appid=${this.apiKey}`);
   }

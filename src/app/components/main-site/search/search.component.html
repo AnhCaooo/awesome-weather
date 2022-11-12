@@ -1,14 +1,23 @@
 <div class="switch-container">
-    <button mat-icon-button 
+    <button mat-stroked-button
+            [disabled]="!enableSwitchUnitButton"
             [matMenuTriggerFor]="unitMenu" 
-            matTooltip="Switch between metric and imperial units"
-            aria-label="Button that allow switching between metric and imperial units">
-        <mat-icon>pending</mat-icon>
-    </button>
+            matTooltip="Switch between standard, metric and imperial units"
+            aria-label="Switching between standard, metric and imperial units">
+        {{selectedUnit | titlecase}}
+        </button>
     <mat-menu #unitMenu="matMenu">
         <button 
             mat-menu-item
-            (click)="selectMetricUnits()">
+            (click)="searchWeathers(standardUnit)">
+            <div class="single-unit-container">
+                <span><strong>Standard</strong></span>
+                <span>K, m/s</span>
+            </div>
+        </button>
+        <button 
+            mat-menu-item
+            (click)="searchWeathers(metricUnit)">
             <div class="single-unit-container">
                 <span><strong>Metric</strong></span>
                 <span>°C, m/s</span>
@@ -16,7 +25,7 @@
         </button>
         <button 
             mat-menu-item
-            (click)="selectImperialUnits()">
+            (click)="searchWeathers(imperialUnit)">
             <div class="single-unit-container">
                 <span><strong>Imperial</strong></span>
                 <span>°F, mph</span>
