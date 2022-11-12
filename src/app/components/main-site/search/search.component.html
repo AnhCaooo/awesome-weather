@@ -49,7 +49,7 @@
                     required
                     [formControl]="location"
                     data-cy="location-field">
-                <mat-error *ngIf="location.hasError('pattern')">You are only allowing text characters and comma only</mat-error>
+                <mat-error *ngIf="location.hasError('pattern')">You have to type at least 3 letters, and you are only allowed to type text and comma only (no digits, special characters).</mat-error>
                 <mat-icon matPrefix>search</mat-icon>
                 <mat-icon matSuffix
                     matTooltipPosition="right"

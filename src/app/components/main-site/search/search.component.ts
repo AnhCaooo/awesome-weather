@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WeathersService } from 'src/app/services/weathers.service';
 import {FormControl, Validators} from '@angular/forms';
 
@@ -8,7 +8,7 @@ import {FormControl, Validators} from '@angular/forms';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  location = new FormControl('', [Validators.pattern('^[a-zA-Z,]*')]);
+  location = new FormControl('', [Validators.pattern('^[a-zA-Z,]{3,}')]);
 
   metricUnit = 'metric';
   imperialUnit = 'imperial';
