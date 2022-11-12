@@ -1,6 +1,9 @@
 <div class="results">
     <div class="info">
-        <span>There are {{count}} duplicate cities based on your initial search. Can you clarify more based on the country name or country code?</span>
+        <div *ngIf="count > 1 && count !== 0 ;">
+            <span>There are <strong>{{count}} duplicate locations</strong> based on your initial search. Follow the searching instructions by the searching field to find exact the weather at your desired location. 
+            </span>
+        </div>
     </div>
 
     <div class="result" *ngFor="let weather of weathers;">
@@ -25,7 +28,7 @@
             </mat-card-content>
           </mat-card>
     </div>
-    <!-- TEST UI CODE -->
+    <!-- CODE USED ONLY FOR TEST UI PURPOSE -->
     <!-- <mat-card class="mat-elevation-z5">
         <mat-card-header>
             <mat-card-title>HELSINKI - FI</mat-card-title>

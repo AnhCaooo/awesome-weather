@@ -43,12 +43,17 @@
                 name="city"
                 required
                 [formControl]="location">
+            <mat-error *ngIf="location.hasError('pattern')">You are only allowing text characters and comma only</mat-error>
             <mat-icon matPrefix>search</mat-icon>
-            <mat-error *ngIf="location.hasError('required')">You should search for a city first!</mat-error>
+            <mat-icon matSuffix
+                matTooltipPosition="right"
+                matTooltip="If you are looking for the weather at specific location, your searching query should like this: {city name},{country code}">
+                help
+            </mat-icon>
         </mat-form-field>
         <button 
             mat-flat-button
-            [disabled]="!location.value || location.hasError('required')"
+            [disabled]="!location.value || location.hasError('pattern')"
             (click)="searchWeathers()">
             Search
         </button>

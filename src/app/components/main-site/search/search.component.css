@@ -48,4 +48,5 @@ mat-form-field {
 
 ::ng-deep.mat-tooltip {
     font-size: 12px !important;
+    white-space: pre-line !important;
 }

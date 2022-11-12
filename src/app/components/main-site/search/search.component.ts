@@ -8,7 +8,7 @@ import {FormControl, Validators} from '@angular/forms';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  location = new FormControl('', [Validators.required]);
+  location = new FormControl('', [Validators.pattern('^[a-zA-Z,]*')]);
   metricUnit = 'metric';
   imperialUnit = 'imperial';
   standardUnit = 'standard';

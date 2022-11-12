@@ -8,9 +8,9 @@ mat-card {
 }
 
 .results {
-    width: 700px;
+    width: 500px;
     margin: 0 auto;
-    padding-right: 70px;
+    margin-left: 320px;
 }
 
 .info {
