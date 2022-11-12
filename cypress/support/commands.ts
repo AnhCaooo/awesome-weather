@@ -41,3 +41,53 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+
+declare namespace Cypress {
+    interface Chainable<Subject = any> {
+        getAndCheckSearchButtonShouldBeDisabled(): void;
+        getAndCheckSwitchUnitButtonShouldBeDisabled(): void;
+        getAndTypeInLocationField(location: string): void;
+        checkEnabledAndClickSearchButton(): void;
+        getAndCheckWeatherCardId(idCard: string): void;
+        getAndCheckSwitchUnitButtonShouldBeEnabled(): void;
+        getSwitchUnitButtonAndSwitchUnit(buttonName: string, selectionName: string): void;
+        getAndCheckTheInputPlaceholder(placeholder: string): void;
+    }
+}
+
+Cypress.Commands.add("getAndCheckSearchButtonShouldBeDisabled", () => {
+    cy.get('[data-cy="search-button"]').should('be.disabled');
+});
+
+Cypress.Commands.add("getAndCheckSwitchUnitButtonShouldBeDisabled", () => {
+    cy.get('[data-cy="standard"]').should('be.disabled');
+});
+
+Cypress.Commands.add("getAndTypeInLocationField", (location) => {
+    cy.get('[data-cy="location-field"]').click().clear().type(location);
+});
+
+Cypress.Commands.add("checkEnabledAndClickSearchButton", () => {
+    cy.get('[data-cy="search-button"]').should('be.enabled').click();
+
+});
+
+Cypress.Commands.add("getAndCheckWeatherCardId", (idCard) => {
+    cy.get(`[data-cy="${idCard}"]`).should('be.visible');
+});
+
+Cypress.Commands.add("getAndCheckSwitchUnitButtonShouldBeEnabled", () => {
+    cy.get('[data-cy="standard"]').should('be.enabled');
+});
+
+Cypress.Commands.add("getSwitchUnitButtonAndSwitchUnit", (buttonName, selectionName) => {
+    cy.get(`[data-cy="${buttonName}"]`).click().then(() => {
+        cy.get(`[data-cy="${selectionName}"]`).click();
+    });
+});
+
+Cypress.Commands.add("getAndCheckTheInputPlaceholder", (placeholderText) => {
+    cy.get('[data-cy="location-field"]').should('have.attr', 'placeholder', placeholderText);
+});
+
