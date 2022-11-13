@@ -11,7 +11,8 @@ export class WeathersService {
   url = 'http://api.openweathermap.org/data/2.5/find?';
 
   weathersLocalStorageKey = 'weathers';
-  localStorageData: any = '';
+  unitLocalStorageKey = 'unit';
+
   private weatherResults = new Subject();
   currentResults = this.weatherResults.asObservable();
 
@@ -22,13 +23,25 @@ export class WeathersService {
 
   getWeathers(location: string | null, unit?: string | null): Observable<any> {
     if (unit) {
+      this.saveUnitInLocalStorage(unit);
       return this.http.get(`${this.url}q=${location}&appid=${this.apiKey}&units=${unit}`);
+    } else {
+      this.saveUnitInLocalStorage('standard');
+      return this.http.get(`${this.url}q=${location}&appid=${this.apiKey}`);
     }
-    return this.http.get(`${this.url}q=${location}&appid=${this.apiKey}`);
   }
 
   passWeathers(weatherList: any): void{
     this.weatherResults.next(weatherList);
+  }
+
+  saveUnitInLocalStorage(unit: any) {
+    localStorage.setItem(this.unitLocalStorageKey, JSON.stringify(unit));
+  }
+
+  readUnitInLocalStorage() {
+    let unitLocalStorage: any = localStorage.getItem(this.unitLocalStorageKey);
+    return JSON.parse(unitLocalStorage);
   }
 
   saveWeathersInLocalStorage(weatherData: any) {
@@ -37,11 +50,10 @@ export class WeathersService {
 
   readWeathersInLocalStorage() {
     let weathersLocalStorage: any = localStorage.getItem(this.weathersLocalStorageKey);
-    this.localStorageData = JSON.parse(weathersLocalStorage);
-    return this.localStorageData;
+    return JSON.parse(weathersLocalStorage);
   }
 
-  clearWeathersInLocalStorage() {
-    localStorage.removeItem(this.weathersLocalStorageKey);
+  clearAllDataInLocalStorage() {
+    localStorage.clear();
   }
 }

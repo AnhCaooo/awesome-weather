@@ -11,7 +11,7 @@ The app can do:
   - in case a user enters a city name which is not unique and exist in multiple countries (ex: London), they will receive the info for clarify their selection. There is an instruction next to input field to guide how to enter a city name with country code
   - in case a user enters a city name that is not existed, the application will print 'No weathers available'.
 - posibility to switch between standard unit (Kelvin, m/s), metric unit (Celcius, m/s) and imperial unit (Fahrenheit, mph)
-- selected location and units will be stored in user's browser and prepopulated in the next time they visit. (Now, the posibility to change units after user close and open is not implemented yet.)
+- selected location and units will be stored in user's browser and prepopulated in the next time they visit (weather data in the specific unit will be similar with preivous access).
 - unit test (component test) and e2e test are available. Both testing methods are using Cypress
 
 ## Preparations
@@ -35,6 +35,22 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Running unit tests and end-to-end tests with Cypress
 
 Run `ng e2e` to execute the unit tests and end-to-end tests via [Cypress](https://www.cypress.io/). To use this command, you need to first add a package that implements end-to-end testing capabilities.
+
+If you run `npx cypress open`, you need to execute command `ng serve` at the same time in order to execute the test.
+
+### Unit tests
+
+- Option 1: Use Cypress GUI
+
+Open Cypress GUI by `ng e2e` or combine `npx cypress open` and `ng serve`, then select **Component Testing**
+
+- Option 2: Use command line
+
+`npx cypress --component`
+
+### End-to-end tests
+
+Open Cypress GUI by `ng e2e` or combine `npx cypress open` and `ng serve`, then select **E2E Testing**
 
 ## Further help
 

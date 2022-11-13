@@ -43,3 +43,10 @@ Thumbs.db
 
 # Config file 
 /src/assets/config.ts
+
+# Cypress files
+/cypress/screenshots
+/cypress/videos
+/cypress/downloads
+/cypress/fixtures
+

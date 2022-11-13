@@ -13,7 +13,7 @@ export class SearchComponent implements OnInit {
   metricUnit = 'metric';
   imperialUnit = 'imperial';
   standardUnit = 'standard';
-  selectedUnit: string | undefined = this.standardUnit;
+  selectedUnit: string | undefined = '';
   enableSwitchUnitButton = false; 
 
   constructor(
@@ -21,6 +21,7 @@ export class SearchComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.selectedUnit = this.weathersService.readUnitInLocalStorage();
   }
   
   searchWeathers(unit?: string): void {
@@ -44,10 +45,10 @@ export class SearchComponent implements OnInit {
         }
       });
     }
+    this.selectedUnit = this.weathersService.readUnitInLocalStorage();
     this.enableSwitchUnitButton = true;
   }
 
   // clearSearchedWeathers(): void {
-    
   // }
 }

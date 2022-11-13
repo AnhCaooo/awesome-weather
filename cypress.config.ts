@@ -2,10 +2,11 @@ import { defineConfig } from 'cypress'
 
 export default defineConfig({
   
+  scrollBehavior: 'nearest',
+
   e2e: {
     'baseUrl': 'http://localhost:4200',
   },
-  
   
   component: {
     devServer: {
@@ -14,5 +15,5 @@ export default defineConfig({
     },
     specPattern: '**/*.cy.ts'
   }
-  
+
 })
