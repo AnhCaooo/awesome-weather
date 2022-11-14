@@ -7,50 +7,48 @@
             <span class="info">There are <strong>{{localDataStorage.count}} duplicate locations</strong> based on your search. Follow the searching instructions by the searching field to find exact the weather at your desired location. 
             </span>
         </div>
-        <div>
-            <div class="result" *ngFor="let weather of localDataStorage.list; index as i">
-                <mat-card class="mat-elevation-z5" [attr.data-cy]="weather.id">
-                    <mat-card-header>
-                        <mat-card-title>{{weather.name}} - {{weather.sys.country}}</mat-card-title>
-                        <mat-card-subtitle>{{weather.weather[0].main}}</mat-card-subtitle>
-                    </mat-card-header>
-            
-                    <mat-card-content>
-                        <div class="flex-row">
-                            <div class="temp">                        
-                                <span class="big-text">{{weather.main.temp}} degree</span>
-                                <span>Feels like </span>
-                                <span>{{weather.main.feels_like}} degree</span>
-                            </div>
-                            <div class="outlook">
-                                <img [src]="showImageIcon(weather.weather[0].icon)" alt="weather-image-icon"/>
-                                <span>{{weather.weather[0].description | titlecase}}</span>
-                            </div>
-                      </div>
-                    </mat-card-content>
-                  </mat-card>
-            </div>
-            <!-- CODE USED ONLY FOR TEST UI PURPOSE -->
-            <!-- <mat-card class="mat-elevation-z5">
+        <div class="result" *ngFor="let weather of localDataStorage.list; index as i">
+            <mat-card class="mat-elevation-z5" [attr.data-cy]="weather.id">
                 <mat-card-header>
-                    <mat-card-title>HELSINKI - FI</mat-card-title>
-                    <mat-card-subtitle>Cloudy</mat-card-subtitle>
+                    <mat-card-title>{{weather.name}} - {{weather.sys.country}}</mat-card-title>
+                    <mat-card-subtitle>{{weather.weather[0].main}}</mat-card-subtitle>
                 </mat-card-header>
         
                 <mat-card-content>
                     <div class="flex-row">
-                        <div class="temp">
-                            <span class="big-text">17 °C</span>
+                        <div class="temp">                        
+                            <span class="big-text">{{weather.main.temp}} degree</span>
                             <span>Feels like </span>
-                            <span>12 °C</span>
+                            <span>{{weather.main.feels_like}} degree</span>
                         </div>
                         <div class="outlook">
-                            <img src="http://openweathermap.org/img/wn/02d@2x.png" />
-                            <span>Few Clouds</span>
+                            <img [src]="showImageIcon(weather.weather[0].icon)" alt="weather-image-icon"/>
+                            <span>{{weather.weather[0].description | titlecase}}</span>
                         </div>
                   </div>
                 </mat-card-content>
-              </mat-card> -->
-            </div>
+              </mat-card>
+        </div>
+        <!-- CODE USED ONLY FOR TEST UI PURPOSE -->
+        <!-- <mat-card class="mat-elevation-z5">
+            <mat-card-header>
+                <mat-card-title>HELSINKI - FI</mat-card-title>
+                <mat-card-subtitle>Cloudy</mat-card-subtitle>
+            </mat-card-header>
+    
+            <mat-card-content>
+                <div class="flex-row">
+                    <div class="temp">
+                        <span class="big-text">17 °C</span>
+                        <span>Feels like </span>
+                        <span>12 °C</span>
+                    </div>
+                    <div class="outlook">
+                        <img src="http://openweathermap.org/img/wn/02d@2x.png" />
+                        <span>Few Clouds</span>
+                    </div>
+              </div>
+            </mat-card-content>
+          </mat-card> -->
     </ng-template>
 </div>
