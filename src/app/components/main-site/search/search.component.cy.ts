@@ -76,5 +76,4 @@ describe('SearchComponent', () => {
     cy.getAndTypeInLocationField('London,GB?');
     cy.getTheErrorTextWhenViolateTheInpuRegex();
   });
-
 });

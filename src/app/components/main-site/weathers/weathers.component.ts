@@ -8,8 +8,6 @@ import { WeathersService } from 'src/app/services/weathers.service';
 })
 export class WeathersComponent implements OnInit {
 
-  weathers: any[] = [];
-  count: number = 0;
   localDataStorage: any;
 
   constructor(

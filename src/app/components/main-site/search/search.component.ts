@@ -21,7 +21,11 @@ export class SearchComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.selectedUnit = this.weathersService.readUnitInLocalStorage();
+    if(this.weathersService.readUnitInLocalStorage()) {
+      this.selectedUnit = this.weathersService.readUnitInLocalStorage();
+    } else {
+      this.selectedUnit = 'standard';
+    }
   }
   
   searchWeathers(unit?: string): void {
@@ -32,7 +36,7 @@ export class SearchComponent implements OnInit {
           this.weathersService.passWeathers(data);
         }, 
         error: error => {
-          console.log('Error from Weather Service:', error);
+          this.weathersService.handleError(error);
         }
       });
     } else {
@@ -41,7 +45,7 @@ export class SearchComponent implements OnInit {
           this.weathersService.passWeathers(data);
         }, 
         error: error => {
-          console.log('Error from Weather Service:', error);
+          this.weathersService.handleError(error);
         }
       });
     }

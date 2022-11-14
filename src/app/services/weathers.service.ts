@@ -35,6 +35,12 @@ export class WeathersService {
     this.weatherResults.next(weatherList);
   }
 
+  // catchError
+  handleError(error: any) {
+      console.log('Error from weather service:', error.error.message);
+  }
+
+  // localStorage
   saveUnitInLocalStorage(unit: any) {
     localStorage.setItem(this.unitLocalStorageKey, JSON.stringify(unit));
   }

@@ -7,6 +7,7 @@ describe('Test weather application', () => {
   it('Search weather at London (no country code) will have multiple value', () => {
     cy.getAndCheckSearchButtonShouldBeDisabled();
     cy.getAndCheckSearchButtonShouldBeDisabled();
+    cy.getTextNoWeathersAvailable();
     cy.getAndCheckSwitchUnitButtonShouldBeDisabled();
     cy.getAndTypeInLocationField('London');
     cy.checkEnabledAndClickSearchButton();
@@ -16,6 +17,7 @@ describe('Test weather application', () => {
     cy.getAndCheckWeatherCardId('6058560')
     cy.getAndCheckSwitchUnitButtonShouldBeEnabled();
     cy.getSwitchUnitButtonAndSwitchUnit('standard', 'imperial');
+    cy.getAndCheckInfoTextShouldNotExist();
   });
 
   it('Search weather at London with country code GB will have only 1 value', () => {
@@ -27,7 +29,7 @@ describe('Test weather application', () => {
     cy.getAndCheckWeatherCardId('2643743');
     cy.getAndCheckSwitchUnitButtonShouldBeEnabled();
     cy.getSwitchUnitButtonAndSwitchUnit('standard', 'imperial');
-    cy.get('[data-cy="no-value"]').should('not.exist');
+    cy.getAndCheckInfoTextShouldNotExist();
   });
 
   it('Search weather at unvailable location', () => {
@@ -35,12 +37,13 @@ describe('Test weather application', () => {
     cy.getAndCheckSwitchUnitButtonShouldBeDisabled();
     cy.getAndTypeInLocationField('cypressTesting');
     cy.checkEnabledAndClickSearchButton();
-    cy.getNoWeathersAvailable();
+    cy.getTextNoWeathersAvailable();
   });
 
   it('switch unit button will be disabled when user does not click search button, and enabled when user clicks search button', () => {
     cy.getAndCheckSwitchUnitButtonShouldBeDisabled();
     cy.getAndCheckSearchButtonShouldBeDisabled();
+    cy.getTextNoWeathersAvailable();
     cy.getAndCheckTheInputPlaceholder('Helsinki');
     cy.getAndTypeInLocationField('London,GB');
     cy.checkEnabledAndClickSearchButton();
@@ -52,6 +55,7 @@ describe('Test weather application', () => {
     cy.getAndTypeInLocationField('London,GB');
     cy.checkEnabledAndClickSearchButton();
     cy.getSwitchUnitButtonAndSwitchUnit('standard', 'metric');
+    cy.getAndCheckInfoTextShouldNotExist();
   });
 
   it('should get warning and cannot search when type less than 3 characters', () => {
@@ -59,13 +63,15 @@ describe('Test weather application', () => {
     cy.getAndTypeInLocationField('Lo');
     cy.getAndClickHelpIcon();
     cy.getTheErrorTextWhenViolateTheInpuRegex();
+    cy.getTextNoWeathersAvailable();
   });
 
   it('should get warning and cannot search when type blank space: London, GB', () => {
     cy.getAndCheckTheInputPlaceholder('Helsinki');
     cy.getAndTypeInLocationField('London, GB');
     cy.getAndClickHelpIcon();
-    cy.getTheErrorTextWhenViolateTheInpuRegex()
+    cy.getTheErrorTextWhenViolateTheInpuRegex();
+    cy.getTextNoWeathersAvailable();
   });
 
   it('should get warning and cannot search when type special characters', () => {
@@ -73,5 +79,6 @@ describe('Test weather application', () => {
     cy.getAndTypeInLocationField('London,GB?');
     cy.getAndClickHelpIcon();
     cy.getTheErrorTextWhenViolateTheInpuRegex();
+    cy.getTextNoWeathersAvailable();
   });
 })

@@ -57,7 +57,8 @@ declare global {
             getTheTextOfSwitchUnitButton(selectionName: string): void;
             getTheErrorTextWhenViolateTheInpuRegex(): void;
             getAndClickHelpIcon(): void;
-            getNoWeathersAvailable(): void;
+            getTextNoWeathersAvailable(): void;
+            getAndCheckInfoTextShouldNotExist(): void;
         }
     }
 } 
@@ -111,9 +112,12 @@ Cypress.Commands.add("getAndClickHelpIcon", () => {
     cy.get('[data-cy="help-icon"]').click();
 });
 
-Cypress.Commands.add("getNoWeathersAvailable", () => {
+Cypress.Commands.add("getTextNoWeathersAvailable", () => {
     cy.get('[data-cy="no-value"]').should('contain', 'No weathers available');
-    // cy.get('[data-cy="help-icon"]').click();
+});
+
+Cypress.Commands.add("getAndCheckInfoTextShouldNotExist", () => {
+    cy.get('[data-cy="no-value"]').should('not.exist');
 });
 
 export {}
